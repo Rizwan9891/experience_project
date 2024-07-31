@@ -41,3 +41,19 @@ export const sendMail = (receiver, OTP, type) => {
         }
     });
 };
+
+export const sendCustomMail = (receiver, subject, htmlContent) => {
+    return new Promise((resolve, reject) => {
+        transporter.sendMail({
+            from: `Experience team <${emailConfig.user}>`,
+            to: receiver,
+            subject: subject,
+            html: htmlContent,
+            auth: auth,
+        }).then((send) => {
+            resolve(send);
+        }).catch((error) => {
+            reject(error);
+        });
+    });
+};

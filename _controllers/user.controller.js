@@ -8,6 +8,7 @@ import { generate } from '../_helpers/userId.helper.js';
 import transactionModel from '../_models/transaction.model.js';
 import orderModel from '../_models/order.model.js';
 import { uploadImage } from '../_helpers/aws.helper.js';
+import { sendCustomMail } from '../_helpers/mailer.helper.js';
 
 export const signup = (req, res) => {
     const requiredFields = ['password', 'name', 'email'];
@@ -480,6 +481,24 @@ export const getAllCount = (req, res) => {
         }).catch((error) => {
             res.status(500).json({ error: true, statusCode: 500, message: "Something went wrong." });
         })
+    } else {
+        res.status(500).json({ error: true, statusCode: 500, message: "You can't access." });
+    }
+};
+export const sendCustomEmail = (req, res) => {
+    if (req.role == "Admin") {
+        const requiredFields = ['receiver', 'subject', 'text'];
+        for (const field of requiredFields) {
+            if (!req.body[field] || req.body[field] === '') {
+                return res.status(400).json({ statusCode: 400, error: true, message: `${field} is required.` });
+            }
+        }
+        sendCustomMail(req.body.receiver, req.body.subject, req.body.text).then((result) => {
+            res.status(200).json({ error: false, statusCode: 200, message: "Email has been send successfully." });
+        }).catch((error) => {
+            console.log("error", error)
+            res.status(500).json({ error: true, statusCode: 500, message: "Something went wrong." });
+        });
     } else {
         res.status(500).json({ error: true, statusCode: 500, message: "You can't access." });
     }

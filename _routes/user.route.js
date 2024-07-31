@@ -1,4 +1,4 @@
-import { signup, login, adminLogin, changePassword, getDetails, accountVerification, changeStatus, forgotPassword, resetPassword, updateProfile, getAllUsers, deleteUser, getAllCount } from '../_controllers/user.controller.js';
+import { signup, login, adminLogin, changePassword, getDetails, accountVerification, changeStatus, forgotPassword, resetPassword, updateProfile, getAllUsers, deleteUser, getAllCount, sendCustomEmail } from '../_controllers/user.controller.js';
 import { auth } from '../_middleware/auth.middleware.js'
 
 export default (app) => {
@@ -17,6 +17,7 @@ export default (app) => {
     app.post('/api/admin/user/get/all', auth, getAllUsers);
     app.delete('/api/admin/delete/user/:id', auth, deleteUser);
     app.get('/api/admin/get/all/count', auth, getAllCount);
+    app.post('/api/admin/send/custom/email', auth, sendCustomEmail);
 
     // User API
     app.post('/api/user/signup', signup);
