@@ -1,0 +1,27 @@
+{
+  "name": "experience_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1665.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cloudinary": "^2.2.0",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "formidable": "^3.5.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.4",
+    "nodemailer": "^6.9.13",
+    "nodemon": "^3.1.0",
+    "razorpay": "^2.9.4"
+  }
+}
