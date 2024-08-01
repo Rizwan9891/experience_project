@@ -13,6 +13,8 @@ import transactionRoute from './_routes/transaction.route.js';
 import bannerRoute from './_routes/banner.route.js';
 import ratingRoute from './_routes/rating.route.js';
 import categoryRoute from './_routes/category.route.js';
+import faqRoute from './_routes/faq.route.js';
+import blogRoute from './_routes/blog.route.js';
 
 mongoose.set('strictQuery', false);
 mongoose.connect(dbConfig.url, {}).then((connected) => {
@@ -40,6 +42,8 @@ addressRoute(app);
 transactionRoute(app);
 bannerRoute(app);
 categoryRoute(app);
+faqRoute(app);
+blogRoute(app);
 
 app.get("/", (req, res) => {
     res.status(200).json(`Backend version 1.0.0 working `);
