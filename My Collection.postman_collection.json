@@ -1,0 +1,1109 @@
+{
+	"info": {
+		"_postman_id": "dd333aad-9be3-4661-9368-0d32cdb60a82",
+		"name": "My Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28814273",
+		"_collection_link": "https://crimson-astronaut-292077.postman.co/workspace/sndigitech-Workspace~88236919-cdac-41fe-825e-b8162da908be/collection/28814273-dd333aad-9be3-4661-9368-0d32cdb60a82?action=share&source=collection_link&creator=28814273"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Admin Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"rizwan.sndigitech@gmail.com\",\r\n    \"password\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}admin/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Send Custom Email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"receiver\":\"jofeket337@digdy.com\",\r\n    \"subject\":\"Test Email\",\r\n    \"text\":\"Hello, this is the text email from my side\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}admin/send/custom/email"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"jofeket337@digdy.com\",\r\n    \"password\":\"12345678\",\r\n    \"name\":\"Rizwan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}user/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "Account Verification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"jofeket337@digdy.com\",\r\n    \"OTP\":\"9067\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}user/account/verification"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"rizwan.sndigitech@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}user/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{local}}user/get/details"
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\"12345678\",\r\n    \"password\":\"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}user/change/password"
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"rizwan.sndigitech@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}user/forgot/password"
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\":\"rizwan.sndigitech@gmail.com\",\r\n    \"OTP\":\"4979\",\r\n    \"password\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}user/reset/password"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "John",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/User/Downloads/images.png"
+								},
+								{
+									"key": "fullAddress",
+									"value": "delhi India",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": "{{local}}user/update/profile"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/E:/Rizwan/Images/1.png"
+								},
+								{
+									"key": "name",
+									"value": "Burger",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{local}}category/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All ",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}category/get/all?limit=10&page=1",
+							"host": [
+								"{{local}}category"
+							],
+							"path": [
+								"get",
+								"all"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{local}}category/delete/66a9db9c11f4410fea0ab329"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Banner",
+			"item": [
+				{
+					"name": "Add Banner",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/User/Downloads/banner2.png"
+								},
+								{
+									"key": "name",
+									"value": "New Offer",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{local}}banner/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{local}}banner/get/all"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Banner",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{local}}banner/delete/66a9dbd911f4410fea0ab335"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Blog",
+			"item": [
+				{
+					"name": "Add Blog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/E:/Rizwan/Images/22.png"
+								},
+								{
+									"key": "title",
+									"value": "New Offer",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Hello",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{local}}blog/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Blog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{local}}blog/get/all"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Blog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{local}}blog/delete/66ab6282396ff0190d28c9df"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FAQ",
+			"item": [
+				{
+					"name": "Add FAQ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"question\":\"What is this\",\r\n    \"answer\":\"This is demo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}FAQ/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All FAQ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{local}}FAQ/get/all"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete FAQ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{local}}FAQ/delete/66ab5f263a019da8cb58f5d0"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Add Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Burger veg",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "66a9d9ce455e1b5636d986bf",
+									"type": "text"
+								},
+								{
+									"key": "totalPrice",
+									"value": "220",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "The top will be in laminated MDF with 32 mm width. The skeleton will be in metallic elements 30x30 mm. the metallic basement has a diameter of 500 mm. The perimeter of the top will be chamfered",
+									"type": "text"
+								},
+								{
+									"key": "discount",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/E:/Rizwan/Images/2.png"
+								},
+								{
+									"key": "quantity",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": "{{local}}admin/product/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}product/get/all?page=1&limit=12",
+							"host": [
+								"{{local}}product"
+							],
+							"path": [
+								"get",
+								"all"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{local}}admin/product/delete/66a9e480ceca4b6737f91de7"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}product/get/byProductId/66a9e6a03bd8143925420bf0"
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}product/search?name=burger",
+							"host": [
+								"{{local}}product"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "burger"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Quantity in Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\":\"66a9e6a03bd8143925420bf0\",\r\n    \"quantity\":12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}admin/product/update/quantity"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Add To Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\":\"66a9e6a03bd8143925420bf0\",\r\n    \"quantity\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}user/cart/add/product"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{local}}user/cart/delete/66a9f9514a96342bdb447282"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cart For User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{local}}user/cart/get/by/userId"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Item From cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\":\"66a9e6a03bd8143925420bf0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}user/cart/remove/product"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "Add Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pinCode\": \"110094\",\r\n    \"state\": \"delhi\",\r\n    \"country\": \"India\",\r\n    \"city\": \"Nehru vihar\",\r\n    \"district\": \"Delhi\",\r\n    \"homeNo\":\"1309\",\r\n    \"streetNo\":\"14\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}user/address/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{local}}user/address/delete/66a9fe78275a581a936a0f35"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Address",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}user/address/get"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Get All Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"limit\": 10,\r\n    \"page\": 1,\r\n    \"status\": \"All\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}user/transaction/get/all",
+							"host": [
+								"{{local}}user"
+							],
+							"path": [
+								"transaction",
+								"get",
+								"all"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cartId\":\"66aa056f9b07e4247c4a4132\",\r\n    \"deliveryCharge\":5,\r\n    \"addressId\":\"66a9feaf275a581a936a0f3e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}user/transaction/order/create"
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"razorpayOrderId\":\"order_OfCGyRQv82wp65\",\r\n    \"razorpayPaymentId\":\"pay_OfCHQI5VYZM0OO\",\r\n    \"signature\":\"b795d5d3c722ab0e204d34232f46ffdd47efa45852a6a9d68f72e1d72533a3ff\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}user/transaction/verify/payment"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Place Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cartId\":\"66aa056f9b07e4247c4a4132\",\r\n    \"addressId\":\"66a9feaf275a581a936a0f3e\",\r\n    \"deliveryCharge\":5,\r\n    \"transactionId\":\"66aa0a544ec29028dbe2c4d7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}order/place"
+					},
+					"response": []
+				},
+				{
+					"name": "Change Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderId\":\"66aa02aa8cec0df7c28954a9\",\r\n    \"status\":\"Processing\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}order/change/status"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Orders of user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{local}}order/get/all/by/userId"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review And Rating",
+			"item": [
+				{
+					"name": "Add Review To Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "productId",
+									"value": "66a9e6a03bd8143925420bf0",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Very Good Buger",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/E:/Rizwan/Images/2.png",
+									"disabled": true
+								}
+							]
+						},
+						"url": "{{local}}rating/review/product/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Rating By UserId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{userToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{local}}rating/get/by/userId"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
